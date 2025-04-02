@@ -137,7 +137,7 @@
             <div class="company-info">
                 @if(isset($company_logo))
                     <div class="logo-container">
-                        <img src="http://127.0.0.1:8000/storage/company-logos/JyWwTe3ci6cO7X4FzffaNBxvAMz3j3eoCFgv3PjY.jpg" alt="Company Logo" class="logo">
+                        <img src="http://localhost:8000/storage/company-logos/JyWwTe3ci6cO7X4FzffaNBxvAMz3j3eoCFgv3PjY.jpg" alt="Company Logo" class="logo">
                     </div>
                 @endif
                 <div>

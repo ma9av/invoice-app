@@ -4,21 +4,18 @@ use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Invoice routes
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/generate_invoice', function () {
-        return view('invoice');
-    })->name('generate.invoice');
+Route::get('/', function () {
+    return view('invoice');
+})->name('generate.invoice');
     
-    Route::post('/generate_invoice', [InvoiceController::class, 'generatePDF'])->name('invoice.generate-pdf');
-    
-        
-});
+Route::post('/', [InvoiceController::class, 'generatePDF'])->name('invoice.generate-pdf');
+            
 
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);

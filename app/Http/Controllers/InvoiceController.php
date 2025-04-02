@@ -22,7 +22,7 @@ class InvoiceController extends Controller
         $validated = $request->validate([
             'company_name' => 'required|string|max:255',
             'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'invoice_number' => 'required|string|max:50',
+            'invoice_number' => 'required|unique:invoices|string|max:50',
             'invoice_date' => 'required|date',
             'due_date' => 'required|date|after_or_equal:invoice_date',
             'po_number' => 'nullable|string|max:50',
@@ -55,7 +55,7 @@ class InvoiceController extends Controller
         // dd(storage_path('app/public/'.$logoPath));
         // Create invoice record with items as JSON
         $invoice = Invoice::create([
-            'user_id' => Auth::user()->id,
+            // 'user_id' => Auth::user()->id,
             'company_name' => $validated['company_name'],
             'company_logo' => Storage::url('app/public/'.$logoPath),
             'invoice_number' => $validated['invoice_number'],
@@ -80,7 +80,7 @@ class InvoiceController extends Controller
 
         // Prepare data for PDF
         $pdfData = [
-            // 'company_logo' => $logoPath ? asset(Storage::url($logoPath)) : null,
+            'company_logo' => $logoPath ? asset(Storage::url($logoPath)) : null,
             'company_name' => $invoice->company_name,
             'invoice_number' => $invoice->invoice_number,
             'invoice_date' => $invoice->invoice_date,

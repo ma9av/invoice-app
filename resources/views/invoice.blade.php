@@ -27,7 +27,7 @@
                                         d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
                                     </path>
                                 </svg>
-                                <span class="text-xs">Upload Logo</span>
+                                
                             </div>
                         </div>
                         <input type="file" id="logo-upload" name="company_logo" class="hidden" accept="image/*">
@@ -125,7 +125,7 @@
                     @error('items.0.name')
                         <div class="text-red-500 text-sm">{{ $message }}</div>
                     @enderror
-                    <td><input type="text" name="items[0][description]"
+                    <td colspan=""><input type="text" name="items[0][description]"
                             class="border rounded p-2 w-full item-description @error('items.0.description') border-red-500 @enderror">
                     </td>
                     @error('items.0.description')
